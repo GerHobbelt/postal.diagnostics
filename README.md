@@ -3,9 +3,11 @@
 # Version 0.7.0
 
 # What is it?
+
 postal.diagnostics is a plug-in for [postal.js](https://github.com/postaljs/postal.js) that enables a 'smart' wiretap on message bus to log all or a filtered subset of messages.  You provide a `DiagnosticsWireTap` instance with a "writer" callback - enabling you to write the logged messages to the console (for example), or to the file system (node.js), DOM Element, websocket or nearly anything else that can be a "writer target".
 
 # Why would I use it?
+
 Developing a browser or node.js application using a local message bus like [postal.js](https://github.com/postal/postal.js) can greatly benefit from design/debug-time console logging.  The postal.diagnostics plugin gives you tight control over what gets logged out to your writer callback, so it's fairly simple to narrow down your logged output to the messages you want to see.  Having good visibility into the messages being published assists you in seeing the components of your application interact, and helps resolve odd runtime edge cases.
 
 # Ok, great, so *how* do I use it?
@@ -33,6 +35,7 @@ Developing a browser or node.js application using a local message bus like [post
 * See below for examples
 
 ## Instantiating a DiagnosticsWireTap
+
 ```javascript
 // simple wire tap:
 // serializes the envelope via JSON.stringify(envelope, null, 4)
@@ -55,6 +58,7 @@ var wireTap = new DiagnosticsWireTap({name: "console"});
 ```
 
 ## Using Filters
+
 Filters are a simple way to constrain what envelopes get passed to the writer callback you provide to the `DiagnosticsWireTap` instance.  A filter is (usually) an object literal that should align with the hierarchy of a postal message envelope - though you only implement the members on which you want to match.  For example:
 
 ```javascript
@@ -110,4 +114,5 @@ var wireTap = new DiagnosticsWireTap({
         * navigate in your browser to http://localhost:3080/example for tests
 
 ## License
+
 postal.diagnostics is dual-licensed MIT & GPL - use whichever is appropriate for your project.
