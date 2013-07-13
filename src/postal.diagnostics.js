@@ -6,7 +6,7 @@
 		}
 	} else if ( typeof define === "function" && define.amd ) {
 		// AMD. Register as an anonymous module.
-		define( ["underscore", "postal"], function ( _, postal ) {
+		define("postal.diagnostics", ["underscore", "postal"], function ( _, postal ) {
 			return factory( _, postal, root );
 		} );
 	} else {
