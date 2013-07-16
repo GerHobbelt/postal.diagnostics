@@ -7,7 +7,7 @@
         "type" : "git",
         "url" : "git://github.com/postaljs/postal.diagnostics"
     },
-	"author" : "Jim Cowart (http://freshbrewedcode.com/jimcowart)",
+    "author" : "Jim Cowart (http://freshbrewedcode.com/jimcowart)",
     "contributors": [
         {
             "name" : "Jim Cowart",
@@ -19,15 +19,15 @@
         "email" : "PleaseJustUseTheIssuesPage@github.com",
         "url" : "http://github.com/postaljs/postal.diagnostics/issues"
    },
-	"directories" : { "lib" : "lib" },
+    "directories" : { "lib" : "lib" },
     "main" : "lib/postal.diagnostics.js",
-	"engines" : {
-		"node" : ">=0.4.0"
-	},
-	"dependencies" : {
-		"underscore" : ">=1.1.7",
+    "engines" : {
+        "node" : ">=0.4.0"
+    },
+    "dependencies" : {
+        "underscore" : ">=1.1.7",
         "postal" : ">=0.6.0"
-	},
+    },
     "bundleDependencies" : [ "underscore", "postal" ],
     "devDependencies" : {
         "anvil.js" : ">= 0.9.4",

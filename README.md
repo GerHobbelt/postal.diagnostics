@@ -16,22 +16,22 @@ Developing a browser or node.js application using a local message bus like [post
 * For amd usage, the module returns the constructor function (i.e. - `require(['postal.diagnostics'], function(DiagnosticsWireTap) { /* use the constructor here */ });`
 * For node.js, the module returns the constructor function (i.e. - `var DiagnosticsWireTap = require('./postal.diagnostics')(_, postal)`)
 * The DiagnosticsWireTap constructor takes 1 argument:
-	* `options` - the options object can provide any of the following members (none are required)
-		* `name`    - the name given to the wiretap (it should be unique - and is most often used to identify *where* it's logging to.  Example, "console").  This value will be used to attach your wiretap instance to the postal.diagnostics namespace (ex. - postal.diagnostics.console). If you don't provide one, a name will be provided for you.
-		* `writer`  - a function that takes one arg (the serialized message envelope) and provides the implementation of how/where to write the desired data.  Simple example: `function(output) { console.log(output); }` (which is also the default value)
-		* `serialize` - a function that takes one arg (the envelope) and returns the desired format to represent the envelope. If you don't want to serialize, you'd simply `function(envelope) { return envelope; }`. *OR* you can stringify it with formatting: `function(envelope) { return JSON.stringify(envelope, null, 4) }` (that example is the default value).
-		* `filters` - optional array of filters that will constrain which envelopes get passed to the `writer` callback. (Filters can also be added later using the `addFilter` method.)
-		* 'active' - boolean which is used to indicate if the wire tap should be active or not. This defaults to `true`.
+    * `options` - the options object can provide any of the following members (none are required)
+        * `name`    - the name given to the wiretap (it should be unique - and is most often used to identify *where* it's logging to.  Example, "console").  This value will be used to attach your wiretap instance to the postal.diagnostics namespace (ex. - postal.diagnostics.console). If you don't provide one, a name will be provided for you.
+        * `writer`  - a function that takes one arg (the serialized message envelope) and provides the implementation of how/where to write the desired data.  Simple example: `function(output) { console.log(output); }` (which is also the default value)
+        * `serialize` - a function that takes one arg (the envelope) and returns the desired format to represent the envelope. If you don't want to serialize, you'd simply `function(envelope) { return envelope; }`. *OR* you can stringify it with formatting: `function(envelope) { return JSON.stringify(envelope, null, 4) }` (that example is the default value).
+        * `filters` - optional array of filters that will constrain which envelopes get passed to the `writer` callback. (Filters can also be added later using the `addFilter` method.)
+        * 'active' - boolean which is used to indicate if the wire tap should be active or not. This defaults to `true`.
 * DiagnosticsWireTap instance members
-	* `name` - unique name of the wire tap instance.
-	* `filters` - an array of filters currently being used by the diagnostics wiretap instance.
-	* `active` - boolean flag (defaults to true) that turns the wiretap off and on
-	* `removeWireTap` - removes the wiretap from postal
+    * `name` - unique name of the wire tap instance.
+    * `filters` - an array of filters currently being used by the diagnostics wiretap instance.
+    * `active` - boolean flag (defaults to true) that turns the wiretap off and on
+    * `removeWireTap` - removes the wiretap from postal
 * The DiagnosticsWireTap prototype implementation:
-	* `applyFilter` - helper method used to apply a given filter to a message envelope, which passes it to the writer callback if it passes the filter test (you should not need to invoke this directly).
-	* `clearFilters` - removes all filters from the `filters` array.
-	* `removeFilter` - removes a specific filter
-	* `addFilter` - accepts a single filter or an array of filters for the wiretap to use for constraining which envelopes get passed to the writer callback
+    * `applyFilter` - helper method used to apply a given filter to a message envelope, which passes it to the writer callback if it passes the filter test (you should not need to invoke this directly).
+    * `clearFilters` - removes all filters from the `filters` array.
+    * `removeFilter` - removes a specific filter
+    * `addFilter` - accepts a single filter or an array of filters for the wiretap to use for constraining which envelopes get passed to the writer callback
 * See below for examples
 
 ## Instantiating a DiagnosticsWireTap
@@ -44,8 +44,8 @@ var wireTap = new postal.diagnostics.DiagnosticsWireTap();
 
 // using AMD/require.js
 define(['postal.diagnostics'], function(DiagnosticsWireTap) {
-	var wireTap = new DiagnosticsWireTap({ name: "console" });
-	// other stuff here.....
+    var wireTap = new DiagnosticsWireTap({ name: "console" });
+    // other stuff here.....
 });
 
 // node.js - postal and underscore need to be passed to the function returned by the module
@@ -64,12 +64,12 @@ Filters are a simple way to constrain what envelopes get passed to the writer ca
 ```javascript
 // Consider an envelope like this:
 {
-	channel: "SomeChannel",
-	topic: "Some.Topic",
-	data: {
-		foo: "bar",
-		bacon: "sizzle"
-	}
+    channel: "SomeChannel",
+    topic: "Some.Topic",
+    data: {
+        foo: "bar",
+        bacon: "sizzle"
+    }
 }
 
 // to match the above envelope on topic name only, your filter object would look like:
@@ -91,12 +91,12 @@ Here's an example of instantiating a `DiagnosticsWireTap` with 3 filters:
 // The filters below mean that ANY envelope that passes
 // at least one of the filters will be passed to the writer callback
 var wireTap = new DiagnosticsWireTap({
-	name: "console",
-	filters: [
-		{ channel: "MyChannel" },
-		{ data: { foo: /bar/ } },
-		{ topic: "Some.Topic" }
-	]
+    name: "console",
+    filters: [
+        { channel: "MyChannel" },
+        { data: { foo: /bar/ } },
+        { topic: "Some.Topic" }
+    ]
 });
 ```
 
@@ -105,11 +105,11 @@ var wireTap = new DiagnosticsWireTap({
 * In case it's not obvious already, postal.diagnostics depends on [postal.js](https://github.com/postaljs/postal.js)
 * postal.diagnostics also depends on [underscore.js](http://underscorejs.org/)
 * postal.diagnostics uses [anvil.js](http://anvil-js.com/) for building, running tests and examples.
-	* To build
+    * To build
         * install anvil.js (`npm install -g anvil.js`)
         * navigate to the root of the repo and run `anvil` - then check the lib folder for the output
     * To run tests & examples
-        * navigate to the root of the repo and run `anvil --host --browser	`
+        * navigate to the root of the repo and run `anvil --host --browser  `
         * navigate in your browser to http://localhost:3080/spec for tests
         * navigate in your browser to http://localhost:3080/example for tests
 

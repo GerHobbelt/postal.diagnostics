@@ -11,9 +11,17 @@ all: lib/postal.diagnostics.js lib/postal.diagnostics.min.js
 
 
 lib/postal.diagnostics.js lib/postal.diagnostics.min.js:    \
-        build.json                                          \
-        src/postal.diagnostics.js
-    $(ANVIL)
+		build.json                                          \
+		src/postal.diagnostics.js 							\
+		$(ANVIL)	
+	$(ANVIL)
+
+$(ANVIL):
+	npm install
 
 clean:
-    -@rm -f lib/postal.diagnostics.js lib/postal.diagnostics.min.js
+	-@rm -f lib/postal.diagnostics.js lib/postal.diagnostics.min.js
+
+superclean: clean
+	-@rm -rf node_modules/
+	
