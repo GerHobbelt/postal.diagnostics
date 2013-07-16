@@ -28,8 +28,11 @@
 		"underscore" : ">=1.1.7",
         "postal" : ">=0.6.0"
 	},
-	"bundleDependencies" : [ "underscore", "postal" ],
-	"devDependencies" : {},
+    "bundleDependencies" : [ "underscore", "postal" ],
+    "devDependencies" : {
+        "anvil.js" : ">= 0.9.4",
+        "anvil.uglify" : ">= 0.1.2"
+    },
     "licenses" : [
         {
             "type" : "MIT",
