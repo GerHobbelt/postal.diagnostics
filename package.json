@@ -28,7 +28,8 @@
   },
   "dependencies": {
     "underscore": "~1.5.2",
-    "postal": ">=0.6.0"
+    "postal": ">=0.6.0",
+    "snyk": "^1.189.0"
   },
   "bundleDependencies": [
     "underscore",
@@ -63,6 +64,9 @@
   "scripts": {
     "test": "mocha ./spec/*.js",
     "build": "gulp",
-    "start": "gulp server"
-  }
+    "start": "gulp server",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
